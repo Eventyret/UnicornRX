@@ -1,0 +1,59 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/restrict-plus-operands": "off",
+        "@typescript-eslint/explicit-module-boundary-types": [
+          "warn",
+          {
+            "allowArgumentsExplicitlyTypedAsAny": false
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": ["warn"],
+        "@typescript-eslint/no-misused-promises": "off",
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "camelCase"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

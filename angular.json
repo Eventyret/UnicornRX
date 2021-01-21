@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "UnicornRX"
+  "defaultProject": "UnicornRX",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
