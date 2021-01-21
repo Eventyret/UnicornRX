@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
     this.afs
       .collection('test')
       .snapshotChanges()
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe((items) => {
+        console.log(items.map((x) => x.payload.doc.data()));
       });
   }
 }
