@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-shared',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shared.component.scss']
 })
 export class SharedComponent implements OnInit {
-
-  constructor() { }
+  form: FormGroup;
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      input: [null]
+    });
   }
 
+  onSubmit(): void {
+    console.log('Submit');
+  }
+  onPatchValue(): void {
+    this.form.patchValue({ input: 'test' });
+  }
 }

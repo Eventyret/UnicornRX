@@ -23,7 +23,6 @@ export class InputComponent implements ControlValueAccessor {
   @Output() changed = new EventEmitter<string>();
   value: string;
   isDisabled: boolean;
-  constructor() {}
 
   private propagateChange: any = () => {};
   private propagateTouched: any = () => {};
