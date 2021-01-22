@@ -1,4 +1,10 @@
-import { Component, forwardRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'app-input',
@@ -13,6 +19,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class InputComponent implements ControlValueAccessor {
+  @Input() placeholder: string;
+  @Output() changed = new EventEmitter<string>();
   value: string;
   isDisabled: boolean;
   constructor() {}
@@ -31,5 +39,14 @@ export class InputComponent implements ControlValueAccessor {
   }
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
+  }
+
+  onKeyup(value: string): void {
+    this.value = value;
+    this.propagateChange(value);
+    this.changed.emit(value);
+  }
+  onBlur(): void {
+    this.propagateTouched();
   }
 }
